@@ -4,8 +4,10 @@
 <% @messages.each do |message| %>
   <div class="message">
     <h3><a href="/messages/<%= message.id %>">
-    <p><%= message.content %></p></a>
-    <small>(by: <%= message.author %>)</small></h3>
+    <%= message.content %></a><small> (by: <%= message.author %>)</small></h3>
+    <% unless message.url.nil? %>
+      <a href="<%= message.url %>"><%= message.url %></a>
+    <% end %>
   </div>
 <% end %>
 

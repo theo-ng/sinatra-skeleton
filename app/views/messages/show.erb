@@ -1,8 +1,32 @@
-<p>
+<h3><p>
   <%= @message.content %>
+</p></h3>
+<p>
+  Author: <%= @message.author %> 
 </p>
 <p>
-  Author: <%= @message.author %>
+<% unless @message.url.nil? %>
+    URL: <a href="<%= @message.url %>"><%= @message.url %></a>
+<% end %>
 </p>
+created_at: <%= @message.created_at %>
+</p>
+
+
+
+<% if @message.get_post_by_author.length > 1 %>
+<p>
+  Other posts:
+  <% @message.get_post_by_author.each do |post| %>
+    <% unless post.id == @message.id %>
+      <p>
+      <a href="/messages/<%= post.id %>">
+      <%= post.content %>
+      </a>
+      </p>
+    <% end %>
+  <% end %>
+</p>
+<% end %>
 <hr/>
 <a href="/messages">Back to All Messages</a>
