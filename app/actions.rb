@@ -20,7 +20,6 @@ end
 
 post '/messages' do
   @message = Message.new(
-    title:   params[:title],
     content: params[:content],
     author:  params[:author]
     )
